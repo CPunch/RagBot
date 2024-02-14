@@ -10,19 +10,19 @@ class VideoRenderer:
         self.mp = mp
 
         # find highest & lowest note
-        highest = None
-        lowest = None
+        self.highest = None
+        self.lowest = None
         for n in self.mp.notes:
-            if not highest or highest < n.note:
-                highest = n.note
+            if not self.highest or self.highest < n.note:
+                self.highest = n.note
 
-            if not lowest or lowest > n.note:
-                lowest = n.note
+            if not self.lowest or self.lowest > n.note:
+                self.lowest = n.note
 
         self.width = width
         self.height = height
-        self.offset = lowest-1
-        self.noteSize = height / ((highest - lowest)+1)
+        self.offset = self.lowest-1
+        self.noteSize = height / ((self.highest - self.lowest)+1)
         self.keyboardWidth = 100
         self.duration = mp.toSeconds(mp.endTick)+2
         self.timePerWidth = 4 # whole screen will scroll by x seconds
@@ -79,7 +79,7 @@ class VideoRenderer:
                 currentNotes.append(n.note)
 
         # draw keyboard
-        for i in range(self.offset, self.offset+88):
+        for i in range(self.lowest, self.highest+1):
             y = self.height - ((i - self.offset) * self.noteSize)
 
             # select key color
