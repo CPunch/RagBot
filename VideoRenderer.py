@@ -38,8 +38,6 @@ class VideoRenderer:
         # creating animation
         animation = VideoClip(self._makeFrame, duration = self.duration)
         animation.audio = nAudio
-
-        # displaying animation with auto play and looping
         animation.write_videofile(filename=filename, fps=60, threads=16)
 
     # returns true if the note is currently playing
@@ -49,7 +47,7 @@ class VideoRenderer:
 
         # note won't be rendered
         if end < 0 or start > self.timePerWidth or end == start:
-            return
+            return False
 
         x = (start / self.timePerWidth) * self.width + self.keyboardWidth
         x2 = (end / self.timePerWidth) * self.width + self.keyboardWidth
