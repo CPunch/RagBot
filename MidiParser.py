@@ -6,7 +6,7 @@ from collections import namedtuple
 import numpy as np
 import fluidsynth
 
-from .Instruments import Instruments
+from Instruments import Instruments
 
 Note = namedtuple('Note', ['note', 'velocity', 'instru', 'start', 'end'])
 Pitch = namedtuple('Pitch', ['pitch', 'instru', 'time'])

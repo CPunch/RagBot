@@ -2,8 +2,8 @@ from moviepy.editor import *
 from PIL import Image, ImageDraw
 import numpy as np
 
-from .MidiParser import MidiParser, Note
-from .Instruments import Instruments
+from MidiParser import MidiParser, Note
+from Instruments import Instruments
 
 class VideoRenderer:
     def __init__(self, mp: MidiParser, width: int, height: int, filename: str = "out.mp4") -> None:
